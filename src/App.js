@@ -6,8 +6,7 @@ import {Route} from 'react-router-dom';
 
 class App extends Component {
   state ={
-    contacts: [],
-    screen: 'list'
+    contacts: []
   }
 
   componentDidMount(){
@@ -35,11 +34,6 @@ removeContact = (contact) => {
         <ListContacts 
         contacts = {this.state.contacts}
         onDeleteContact = {this.removeContact}
-        onNavigate={() => {
-          this.setState(() => ({
-            screen: 'create'
-          }))
-        }}
         />
       )} />
 
