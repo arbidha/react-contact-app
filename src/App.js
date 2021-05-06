@@ -4,7 +4,8 @@ import * as ContactsApi from './utils/ContactsAPI'
 
 class App extends Component {
   state ={
-    contacts: []
+    contacts: [],
+    screen: 'list'
   }
 
   componentDidMount(){
@@ -28,10 +29,22 @@ removeContact = (contact) => {
   render() {
     return (
       <div>
+      {this.state.screen === 'list' && (
         <ListContacts 
         contacts = {this.state.contacts}
         onDeleteContact = {this.removeContact}
+        onNavigate={() => {
+          this.setState(() => ({
+            screen: 'create'
+          }))
+        }}
         />
+      )}
+
+        {this.state.screen === 'create' && (
+          <CreateContact />
+        )}
+        
       </div>
     );
   }
